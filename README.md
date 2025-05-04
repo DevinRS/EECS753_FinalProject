@@ -50,7 +50,7 @@ Our original focus was on deploying deep learning models on resource-constrained
 ## 👥 Team
 
 - **Devin Setiawan** – Focus on TinyNAS
-- **Vinayak Jha** – Focus on TinyEngine
+- **Vinayak Jha** – Focus on Edge Deployment
 
 ---
 
