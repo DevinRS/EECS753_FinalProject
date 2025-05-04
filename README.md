@@ -1,18 +1,23 @@
 # MCUNet Reproduction: Tiny Deep Learning on IoT Devices
 
-This project aims to reproduce the results of the **MCUNet** paper:  
+This project began as a reproduction of the **MCUNet** paper:
 > *"MCUNet: Tiny Deep Learning on IoT Devices" (NeurIPS 2020)* by Ji Lin et al.
 
-Our focus is on deploying deep learning models on resource-constrained microcontrollers, specifically targeting the **Visual Wake Words (VWW)** task (i.e., person detection).
+Our original focus was on deploying deep learning models on resource-constrained microcontrollers, specifically targeting the **Visual Wake Words (VWW)** task (i.e., person detection). Midway through, we pivoted based on practical challenges and resource constraints. The revised project focuses on re-implementing the **TinyNAS** component and demonstrating its adaptability to alternate datasets and toolchains.
 
 ---
 
 ## 📌 Objectives
 
 - Reproduce MCUNet's person detection task using **TinyNAS** and **TinyEngine**
-- Deploy trained and quantized models on microcontrollers (e.g., STM32F746 or Raspberry Pi Pico)
-- Benchmark model accuracy, memory usage, and latency
-- Document the full process, highlighting challenges, successful strategies, and implementation notes
+- **(Achieved)** Replicate model zoo results for VWW and run models on benchmark dataset
+- **(Pivot)** Address deployment issues when integrating camera input on STM32
+- Refocus on implementing and experimenting with the **TinyNAS** component
+- Demonstrate the flexibility of TinyNAS by adapting it to:
+   - A **ResNet-style backbone**
+   - A **TensorFlow Lite** optimization pipeline
+   - A lightweight **Rock-Paper-Scissors** dataset
+- Document the process, highlight lessons learned, and evaluate modularity of MCUNet components
 
 ---
 
@@ -20,22 +25,25 @@ Our focus is on deploying deep learning models on resource-constrained microcont
 
 1. **Literature and Code Review**
    - Analyze the MCUNet paper and official GitHub repository
-2. **Model Reproduction**
-   - Use TinyNAS to design and quantize models for the VWW dataset
-3. **Deployment**
-   - Deploy models using TinyEngine on a microcontroller
-4. **Benchmarking**
-   - Evaluate accuracy, SRAM/Flash usage, and inference speed
-5. **(Optional)** Re-implement TinyNAS or TinyEngine from scratch
+2. **Initial Reproduction**
+   - Successfully reproduced VWW model results using pre-trained models
+3. **Deployment Challenge**
+   - Encountered persistent issues running camera-integrated inference on STM32
+4. **Pivot and Refocus**
+   - Shifted effort to study and adapt TinyNAS to a custom training and deployment pipeline
+   - Used TensorFlow Lite for deployment to avoid needing to learn TinyEngine internals
+   - Switched to Rock-Paper-Scissors dataset for simplified data collection and training
+5. **Experimentation**
+   - Modified search space and architecture within TinyNAS to evaluate backbone flexibility
 
 ---
 
-## 📦 Expected Outcomes
+## 📦 Outcomes
 
-- Working implementation on STM32 or equivalent MCU
-- Metrics comparable to the original paper
-- A short demo of real-time image detection
-- Written report of replication effort
+- ✅ Reproduced VWW results using model zoo and deployed on STM32 (no camera)
+- ✅ Identified limitations of TinyEngine integration with camera input on STM32
+- ✅ Re-implemented TinyNAS with custom backbone and dataset
+- ⚡ Demonstrated TinyNAS’s adaptability to alternate backbones, datasets, and toolchains
 
 ---
 
